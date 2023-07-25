@@ -5,4 +5,9 @@
   /* width: 100px;
   height: 100px; */
   background-color: rgb(244, 246, 245);
+  justify-content: center;
+  align-items: center;
+}
+.main_div2{
+width: 100%;
 }
