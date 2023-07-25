@@ -2,7 +2,7 @@ import React from 'react'
 
 function main() {
   return (
-    <div>hello dear</div>
+    <div>hello dearsdfsd</div>
   )
 }
 
