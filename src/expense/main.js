@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import "./main.css"
 function Expense(props) {
 const [title,setTitle]=useState(props.title)
+// console.log(props)
  const amount=props.amount;
 // const title="hgh"
  const eventHandler=()=>{
