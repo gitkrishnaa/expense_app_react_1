@@ -6,33 +6,22 @@ const [title,setTitle]=useState("")
 const [amount,setAmount]=useState("")
 const [date,setDate]=useState("")
 const final_data={
-    title,amount,date
+    title,amount,
+    date
 }
 
 
-const title_handler=(e)=>{
-// alert(e.target.value)
-setTitle(e.target.value)
-// setTitle((x)=>{
-// console.log("setTitle(e)=e-",x)
-// return {...final_data,title:e.target.value,}
-// })
-
-}
-const amount_handler=(e)=>{
-    // alert(e.target.value)
-    setAmount(e.target.value)
-}
-const date_handler=(e)=>{
-    // alert(e.target.value)
-    setDate(e.target.value)
-}
+const title_handler=(e)=>{setTitle(e.target.value)}
+const amount_handler=(e)=>{ setAmount(e.target.value)}
+const date_handler=(e)=>{setDate(e.target.value)}
 const submit=(e)=>{
+    //avoid reload on submit button click
    e.preventDefault();
 
-   props.onSubmit(final_data)
-//    alert("h")
-// console.log(e.target.value,"form")
+//sending date from form_child to parent expense
+ props.xyz(final_data);
+
+
 console.log("form data")
 
 console.log(final_data)
