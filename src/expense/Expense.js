@@ -24,8 +24,52 @@ function App() {
 
   };
 
+  //filter data 
+const filter_function=(e) => {
+    // alert(e.target.value);
+    const filter_data=user.filter((data)=>{
+        if(e.target.value=="All"){    //it is check to return all data of array when user want all
+            return true;  
+        }
+       const year=new Date(data.date).getFullYear()
+       console.log(year);
+       return year==e.target.value     //compare the year with filter value and list of year present in array
+    })
+    setData_render(filter_data)
+    // console.log(filter_data,"filter_data")
 
-
+  }
+//it check if data is empty then message that no data aviliable else render the data
+const is_data_list_empty_or_not=()=>{
+    if(data_render.length==0){
+        return <h1>no expense data</h1>
+    }
+    else if(data_render.length==1){
+       return  data_render.map((x, index) => {
+            return (
+               <div>
+              <Expense_main
+                key={index}
+                title={x.title + index}
+                amount={x.amount}
+                date={x.date}
+              />
+              <h1>please  add more data</h1>
+              </div>
+            );
+          })
+    }
+    return data_render.map((x, index) => {
+        return (
+          <Expense_main
+            key={index}
+            title={x.title + index}
+            amount={x.amount}
+            date={x.date}
+          />
+        );
+      })
+}
   return (
     <div className="main_div1">
       <div className="main_div2">
@@ -35,20 +79,7 @@ function App() {
         <div>
           <div>
             <select
-              onInput={(e) => {
-                // alert(e.target.value);
-                const filter_data=user.filter((data)=>{
-                    if(e.target.value=="All"){
-                        return true;
-                    }
-                   const year=new Date(data.date).getFullYear()
-                   console.log(year);
-                   return year==e.target.value
-                })
-                setData_render(filter_data)
-                // console.log(filter_data,"filter_data")
-
-              }}
+              onInput={filter_function}
             >
               {/* <select onChange={(e)=>{alert(e.target.value)}}> */}
               <option value="All" key="All">
@@ -69,17 +100,8 @@ function App() {
               {/* <option value="2023" key=""></option> */}
             </select>
           </div>
-
-          {data_render.map((x, index) => {
-            return (
-              <Expense_main
-                key={index}
-                title={x.title + index}
-                amount={x.amount}
-                date={x.date}
-              />
-            );
-          })}
+{/* it is chaeck that if data arry list is empty then print "no data aviliable" */}
+          {is_data_list_empty_or_not()}
         </div>
       </div>
     </div>
